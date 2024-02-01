@@ -15,7 +15,7 @@
 //                 "Henry set",
 //             product,
 //             // data: [
-            
+
 //             // ],
 //             // res,
 //         })
@@ -26,14 +26,6 @@
 //     console.log("first");
 // });
 
-
-
-
-
-
-
-
-
 // DAY 2 & 3 CLASS
 
 import express, { urlencoded } from "express";
@@ -41,66 +33,53 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import product from "./product.js";
 
-
 const app = express();
 
-
-app.use(express.json(urlencoded, { limit: "30mb" }));
+app.use(express.json());
 
 app.use(
-    cors({
-        origin: "*",
-        credentials: true,
-    })
+  cors({
+    origin: "*",
+    credentials: true,
+  })
 );
 
 app.use(cookieParser());
 
 app.get(
-    "/",
-    (req, res) => {
-        res.send().json({
-            product: "data",
-        });
-    },
-    () => {}
+  "/grocery",
+  (req, res) => {
+    res.send({
+      product: product,
+    });
+  }
+  // () => {}
 );
 
-app.post("/register", (req, res, next) => {
-    // console.log(req);
-    const { images, name, category, discription, price, percent } = req.body;
+// app.post("/register", (req, res, next) => {
+//     // console.log(req);
+//     const { images, name, category, discription, price, percent } = req.body;
 
-    if (images == "" || name == "" || category == "" || discription == "" || price == "" || percent == "") {
-        res.send("invalid infomation");
-    }
+//     if (images == "" || name == "" || category == "" || discription == "" || price == "" || percent == "") {
+//         res.send("invalid infomation");
+//     }
 
-    // res.send({
-    //     // list: product
-    // })
+//     // res.send({
+//     //     // list: product
+//     // })
 
-    next();
-},
-    
-    (req, res) => {
-        const { images, name, category, discription, price, percent } = req.body;
-        res.send({ images, name, category, discription, price, percent });
-    }
-);
+//     next();
+// },
 
-app.listen(5000, () => {
-    console.log("worked perfectly well")
+//     (req, res) => {
+//         const { images, name, category, discription, price, percent } = req.body;
+//         res.send({ images, name, category, discription, price, percent });
+//     }
+// );
+
+app.listen(5100, () => {
+  console.log("worked perfectly well");
 });
-
-
-
-
-
-
-
-
-
-
-
 
 // DAY 4 CLASS
 
@@ -141,18 +120,12 @@ app.listen(5000, () => {
 //   console.log("worked");
 // });
 
-
-
-
-
-
 // JOSEPH EXAMPLE
 
 // import express from "express"
 // import product from "product.js"
 
 // const app = express();
-
 
 // app.get("/", (req, res) => {
 //     res.send({
@@ -163,4 +136,3 @@ app.listen(5000, () => {
 // app.listen(5000, () => {
 //     console.log("working perfect now")
 // })
-
